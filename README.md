@@ -1,6 +1,11 @@
 # hadoop-start
 再centos 7 虚拟机搭建伪分布式hadoop集群 版本hadoop 2.7.7
 
+初识hadoop:
+Hadoop实现了一个分布式文件系统（Hadoop Distributed File System），简称HDFS。有高容错性的特点，并且设计用来部署在低廉的（low-cost）硬件上；而且它提供高吞吐量来访问应用程序的数据，适合那些有着超大数据集（large data set）的应用程序。
+
+Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数据提供了存储，而MapReduce则为海量的数据提供了计算。
+
 ### 准备工作：
 * （1）虚拟机centos7 和 jdk 的安装：（自行百度--桥接模式，所需镜像在下面百度网盘中）
 
