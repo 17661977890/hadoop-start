@@ -92,8 +92,9 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
 虚拟机内部访问 http://192.168.1.191:50070 查看hadoop服务，访问集群中的所有应用程序的默认端口号为8088。使用以下URL访问该服务 http://192.168.1.191:8088
 
 如果想要本地访问虚拟机内部的hadoop集群服务，需要将本地和虚拟机的防火墙全部关闭，本地就不再介绍，虚拟机关闭防火墙的几个操作命令：
+```bash
 
-firewall-cmd --state ##查看防火墙状态，是否是running
+firewall-cmd --state ##查看防火墙状态，是否是running 
 systemctl status firewalld.service ##查看防火墙状态
 systemctl start firewalld.service ##启动防火墙
 systemctl stop firewalld.service ##临时关闭防火墙
@@ -108,7 +109,7 @@ service ip6tables stop
 设置防火墙服务开机不启动
 chkconfig iptables off
 chkconfig ip6tables off
- 
+```
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143421.png)
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143450.png)
   
