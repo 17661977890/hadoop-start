@@ -18,21 +18,23 @@
 * 3.ls -lrt /etc/alternatives/java -----去后面绿色路径（截止到bin之前就可以） 
 
 
-* (2) hadoop 2.7.7 的安装与配置：
+#### hadoop 2.7.7 的安装与配置：
 * 安装地址 ： http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.7
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
 * 配置hadoop的环境变量 vi etc/profile 还是参考上个链接
 * 输入 hadoop 命令验证是否成功
 
 
-* （3）修改hadoop的配置文件，还是参考上个链接 
-    hadoop 配置文件默认是本地模式，我们修改四个配置文件，这些文件都位于/usr/local/hadoop-2.7.7/etc/hadoop 目录下。
-    
-* ==> vi hadoop-env.sh  设为自己的jdk路径
+#### 修改hadoop的配置文件，还是参考上个链接 
+   
+  hadoop 配置文件默认是本地模式，我们修改四个配置文件，这些文件都位于/usr/local/hadoop-2.7.7/etc/hadoop 目录下。
+```bash
 
- export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
+# vi hadoop-env.sh  
+设为自己的jdk路径
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
  
-* ==> vi core-site.xml
+# vi core-site.xml
 
  <configuration>
     <property>
@@ -47,7 +49,7 @@
     </property>
  </configuration>
 
-* ==> vi hdfs-site.xml
+# vi hdfs-site.xml
   
  <configuration>
     <property>
@@ -58,8 +60,8 @@
 
 
 
-* ==> vi mapred-site.xml
-* 注意事项： 2.7.7版本 MapReduce 配置文件是 mapred-site.xml.template 要重命名为 mapred-site.xml (命令参考：mv a b)
+# vi mapred-site.xml
+# 注意事项： 2.7.7版本 MapReduce 配置文件是 mapred-site.xml.template 要重命名为 mapred-site.xml (命令参考：mv a b)
 
   <configuration>
     <property>
@@ -72,8 +74,9 @@
         <value>yarn</value>
       </property>
   </configuration>
+```
+#### （4）启动hadoop集群:
 
-* （4）启动hadoop集群:
 * ==> 启动之前，格式化文件:你安装hadoop目录（usr/local/hadoop/）下执行命令 bin/hdfs namenode -format
   没有报错日志标识成功：
   
