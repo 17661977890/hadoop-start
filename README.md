@@ -77,13 +77,13 @@
 * ==> 启动之前，格式化文件:你安装hadoop目录（usr/local/hadoop/）下执行命令 bin/hdfs namenode -format
   没有报错日志标识成功：
   
-  ![image]()
+  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%9B%BE%E7%89%871.png)
   
 * ==> 一次性启动：还是安装目录下执行命令：  sbin/start-all.sh 启动 hadoop
 
 * ==> 输入命令 jps  查看进程，如图所示，表示正在启动
   
-  ![image]()
+  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%9B%BE%E7%89%872.png)
   
   可以看到上图正在启动进程，分 别是 namenode、datanode、secondarynamenode、jobtracker、tasktracker，一共 5 个，待执行 完毕后，并不意味着这 5 个  进程成功启动，上面仅仅表示系统正在启动进程而已
 虚拟机内部访问 http://192.168.1.191:50070 查看hadoop服务，访问集群中的所有应用程序的默认端口号为8088。使用以下URL访问该服务 http://192.168.1.191:8088
@@ -106,6 +106,8 @@ service ip6tables stop
 chkconfig iptables off
 chkconfig ip6tables off
  
+ ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143421.png)
+ ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143450.png)
   
 * (5) 有时候因为hadoop版本不同，配置会有不同，就像上述文件要重命名一样
  参考链接：https://www.cnblogs.com/zhengna/p/9316424.html 本文只是以此了解，不按此配置操作，具体其余配置可以自行百度
