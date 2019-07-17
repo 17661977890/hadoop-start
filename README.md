@@ -37,20 +37,22 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 (2)确实配置有误,配置修改参考连接:https://www.cnblogs.com/liulala2017/p/9519705.html
 在 ~/.bashrc 或 /etc/profile这个文件修改 export PATH=<你要加入的路径1>:<你要加入的路径2>: ...... :$PATH    $PATH这个是放在最后的,不像上一个当前终端使用的在前边**
 
-* 废话不说,正确配置如下:(~/.bashrc在每个用户下都存在,我只是在root用户配置了,还有/etc/profile 也配置了)
+* 废话不说,正确配置如下:(~/.bashrc在每个用户下都存在,我只是在root用户配置了,还有/etc/profile 也配置了,以下说明仅仅是我研究环境配置加载搜到的各种说法,不必参考,直接修改即可)
   
   如果你是su 切换root 用户,non-login shell只会读取~/.bashrc这个文件,不会读取/etc/profile,那就修改这个文件,并且source一下,修改内容如下
-  
+
   如果你是su - 切换root 用户,login shell 那就会读取/etc/profile  修改此文件即可,然后source 但是因为系统整体性,不是必要不用改,
   
   如果你是直接首次登录的普通用户: /etc/profile 是属于全局的配置，首次登录会加载,我测试了下:
+  
   假设你的用户为A, 登录系统时也登录为A, 则此时/etc/profile 里面的环境变量直接应用到A用户,然后打开命令行, 你就可以通过 echo $变量名 (不需要花括号)查到你想要的变量名 (包括/etc/profile 和 /home/A/.bashrc 里面设置的;之后sudo su, 登录为root用户, 这个时候/etc/profile的环境变量是不会自动加载的(因为没经历过开机那段时间的一部分黑箱操作), 那这个时候你只能echo到/home/root/.bashrc里面的变量.-----网上搜的我也不清楚,要自己研究了
   
   用su -l 普通用户名切换普通用户,貌似可以读到配置信息 但是会有权限问题 
   
-   --日志:-bash: /usr/local/hadoop/bin/hadoop: 权限不够
+   --日志:-bash: /usr/local/hadoop/bin/hadoop: 权限不够**
    
   ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717134837.png) 
+  
 ```bash
 JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
 export HADOOP_HOME=/usr/local/hadoop
