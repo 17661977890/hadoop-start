@@ -207,3 +207,9 @@ chkconfig ip6tables off
  * 之前hadoop的配置没搞好,这里输入命令老报错:
  * 命令找不到,因为环境变量配置的问题
  * call from XXX to XXX 拒绝连接 这个是因为我当时没有改etc/hosts 配置ip 主机名 映射关系
+ 
+ * 一且正常之后,看效果:
+ 
+ ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152832.png)
+ ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152828.png)
+ 
