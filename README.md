@@ -216,4 +216,4 @@ chkconfig ip6tables off
  
 # hadoop 的相关java api:
   
-  * 参考项目: hadoop-api
+  * 参考项目: hadoop-api  https://github.com/17661977890/hadoop-api
