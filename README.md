@@ -26,8 +26,11 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 #### hadoop 2.7.7 的安装与配置：
 * 安装地址 ： http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.7
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
-* 配置hadoop的环境变量 vi etc/profile 还是参考上个链接
+* 配置hadoop的环境变量 vi /etc/profile 还是参考上个链接
 * 输入 hadoop 命令验证是否成功-----如果你配置玩环境变量还是找不到命令（执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin ）
+
+* 注意： 不同的终端窗口 修改文件后每个都要source /etc/profile 要不然其他窗口不生效的，  
+
 
 
 #### 修改hadoop的配置文件，还是参考上个链接 
@@ -89,7 +92,7 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
   
 * ==> 一次性启动：还是安装目录下执行命令：  sbin/start-all.sh 启动 hadoop
 
-* ==> 输入命令 jps  查看进程，如图所示，表示正在启动
+* ==> 输入命令 jps  查看进程，如图所示，表示正在启动，如果缺少namenode 单独启动一下：hadoop-daemon.sh start namenode
   
   ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%9B%BE%E7%89%872.png)
   
