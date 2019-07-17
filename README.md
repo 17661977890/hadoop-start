@@ -28,7 +28,7 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
 * 配置hadoop的环境变量 vi /etc/profile 还是参考上个链接
 * 输入 hadoop 命令验证是否成功-----如果你配置玩环境变量还是找不到命令
-（执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin ）---如果重启系统=>命令：reboot 以后,会发现环境变量失效，可以设置永久环境变量，自行百度
+（执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin ）---这样重启系统=>命令：reboot 以后,会发现环境变量失效,只适用于当前终端，可以设置永久环境变量，自行百度,参考连接:https://www.cnblogs.com/liulala2017/p/9519705.html
 
 * 注意： 不同的终端窗口 修改文件后每个都要source /etc/profile 要不然其他窗口不生效的，  
 
