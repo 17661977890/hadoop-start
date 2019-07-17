@@ -134,8 +134,9 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
 * ==> 一次性启动：还是安装目录下执行命令：  sbin/start-all.sh 启动 hadoop
 
 * ==> 输入命令 jps  查看进程，如图所示，表示正在启动，如果缺少namenode 单独启动一下：hadoop-daemon.sh start namenode
+* ==> 踩完各种坑后正常日志如下：(上述少节点启动问题不会出现)
   
-  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%9B%BE%E7%89%872.png)
+  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717114838.png)
   
   可以看到上图正在启动进程，分 别是 namenode、datanode、secondarynamenode、jobtracker、tasktracker，一共 5 个，待执行 完毕后，并不意味着这 5 个  进程成功启动，上面仅仅表示系统正在启动进程而已
 虚拟机内部访问 http://192.168.1.191:50070 查看hadoop服务，访问集群中的所有应用程序的默认端口号为8088。使用以下URL访问该服务 http://192.168.1.191:8088
