@@ -36,8 +36,8 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 
 #### 修改hadoop的配置文件，还是参考上个链接 
    
-  * hadoop 配置文件默认是本地模式，我们修改四个配置文件，这些文件都位于/usr/local/hadoop/etc/hadoop 目录下。
-  * 下面的配置中的localhost 可以改为你们虚拟机的ip，如果是动态可以将ip改为静态的，
+  * hadoop 配置文件默认是本地模式，我们修改6个配置文件，这些文件都位于/usr/local/hadoop/etc/hadoop 目录下。
+  * **下面的配置中的localhost 可能需要改为虚拟机的ip或者主机名，貌似localhost哪里会有问题，我启动时候都该我自己的ip了,如果是动态可以将ip改为静态的**
   * 注意配置虚拟机本机ip 与 主机名的映射关系cat /etc/hosts 查看有没有配置，没有则配置 vi /etc/hosts 格式：ip 主机名  
   * 没有上述配置通常执行hdfs 的shell 命令会报错：访问hdfs主节点失败Call From xxxx to xxxx:9000 failed
   * 主机名查询命令 ： hostname
@@ -70,6 +70,18 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
       <name>dfs.replication</name>
       <value>1</value>
     </property>
+    <property>
+          <name>dfs.client.use.datanode.hostname</name>
+          <value>true</value>
+  </property>
+  <property>
+          <name>dfs.datanode.use.datanode.hostname</name>
+          <value>true</value>
+  </property>
+  <property>
+      <name>dfs.permissions</name>
+      <value>false</value>
+  </property>
  </configuration>
 
 
@@ -88,6 +100,27 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
         <value>yarn</value>
       </property>
   </configuration>
+
+# vi yarn-site.xml  (sun.com是我的主机名，你们要设置自己的)
+
+  <configuration>
+         <property>
+             <!--指定yarn的老大resourcemanager的地址-->
+             <name>yarn.resourcemanager.hostname</name>
+             <value>sun.com</value>
+         </property>
+         <property>
+             <!--NodeManager获取数据的方式-->
+             <name>yarn.nodemanager.aux-services</name>
+             <value>mapreduce_shuffle</value>
+         </property>
+</configuration>
+
+# vi slaves 设置主机名（之前是localhost，貌似可以不改）
+#slaves这个文件指定DataNode在哪台机器上。这个文件在hadoop-2.7.7中存在，但是在hadoop-3.1.0里没有这个文件，我怀疑是该文件改名为workers了。当搭建分布式hadoop集群时，需要修改这个文件，配置DataNode在哪台机器上。
+
+  sun.com
+  
 ```
 #### （4）启动hadoop集群:
 
