@@ -60,6 +60,8 @@ export PATH=$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin:$PATH
 # 之前最后PATH配置一直是export PATH=$PATH:$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin  --这是不对的
 ```
 
+**了解linux 是如何加载环境变量得配置得,哥哥配置文件得加载情况:https://www.jianshu.com/p/6d32b166f47d**
+
 
 #### 修改hadoop的配置文件，还是参考上个链接 
    
