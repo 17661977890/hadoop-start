@@ -43,6 +43,7 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
   * 主机名查询命令 ： hostname
   
 ```bash
+不了解 vi vim 文件编辑命令的，这里大概说一下：vi 文件名：进入编辑文件 i 开始编辑  esc 退出编辑模式 :wq 保存并退出 :w 保存 :q 只是退出
 
 # vi hadoop-env.sh  
 设为自己的jdk路径
