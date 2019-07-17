@@ -44,7 +44,7 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
   如果你是su - 切换root 用户,login shell 那就会读取/etc/profile  修改此文件即可,然后source 但是因为系统整体性,不是必要不用改,
   
   如果你是直接首次登录的普通用户: /etc/profile 是属于全局的配置，首次登录会加载,我测试了下:
-  假设你的用户为A, 登录系统时也登录为A, 则此时/etc/profile 里面的环境变量直接应用到A用户,然后打开命令行, 你就可以通过 echo $变量名 (不需要花括号)查到你想要的变量名 (包括/etc/profile 和 /home/A/.bashrc 里面设置的;之后sudo su, 登录为root用户, 这个时候/etc/profile的环境变量是不会自动加载的(因为没经历过开机那段时间的一部分黑箱操作), 那这个时候你只能echo到/home/root/.bashrc里面的变量.
+  假设你的用户为A, 登录系统时也登录为A, 则此时/etc/profile 里面的环境变量直接应用到A用户,然后打开命令行, 你就可以通过 echo $变量名 (不需要花括号)查到你想要的变量名 (包括/etc/profile 和 /home/A/.bashrc 里面设置的;之后sudo su, 登录为root用户, 这个时候/etc/profile的环境变量是不会自动加载的(因为没经历过开机那段时间的一部分黑箱操作), 那这个时候你只能echo到/home/root/.bashrc里面的变量.-----网上搜的我也不清楚,要自己研究了
   
   用su -l 普通用户名切换普通用户,貌似可以读到配置信息 但是会有权限问题 
   
