@@ -37,13 +37,15 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 (2)确实配置有误,配置修改参考连接:https://www.cnblogs.com/liulala2017/p/9519705.html
 在 ~/.bashrc 或 /etc/profile这个文件修改 export PATH=<你要加入的路径1>:<你要加入的路径2>: ...... :$PATH    $PATH这个是放在最后的,不像上一个当前终端使用的在前边**
 
-* 废话不说,正确配置如下:
+* 废话不说,正确配置如下:(~/.bashrc在每个用户下都存在,我只是在root用户配置了,还有/etc/profile 也配置了)
   
   如果你是su 切换root 用户,non-login shell只会读取~/.bashrc这个文件,不会读取/etc/profile,那就修改这个文件,并且source一下,修改内容如下
   
   如果你是su - 切换root 用户,login shell 那就会读取/etc/profile  修改此文件即可,然后source 但是因为系统整体性,不是必要不用改,
   
-  如果你是直接用普通用户,hadoop 命令是不行的,不会读取~/.bashrc文件. 用su -l 普通用户名切换普通用户,才会读取~/.bashrc 但是会有权限问题
+  如果你是直接登录的普通用户,也会读取~/.bashrc文件,但是我没在改用户下配置此文件,所以依然找不到命令,但是应该会读取/etc/profile的,这块还是没有搞明白
+  
+  用su -l 普通用户名切换普通用户,貌似可以读到配置信息 但是会有权限问题 
   
    --日志:-bash: /usr/local/hadoop/bin/hadoop: 权限不够
    
@@ -59,8 +61,7 @@ export PATH=$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin:$PATH
 
 # 之前最后PATH配置一直是export PATH=$PATH:$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin  --这是不对的
 ```
-
-**了解linux 是如何加载环境变量得配置得,哥哥配置文件得加载情况:https://www.jianshu.com/p/6d32b166f47d**
+* **了解linux 是如何加载环境变量得配置得,各个配置文件得加载情况:https://www.jianshu.com/p/6d32b166f47d**
 ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717142858.png)
 
 
