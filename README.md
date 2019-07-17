@@ -61,6 +61,7 @@ export PATH=$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin:$PATH
 ```
 
 **了解linux 是如何加载环境变量得配置得,哥哥配置文件得加载情况:https://www.jianshu.com/p/6d32b166f47d**
+![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717142858.png)
 
 
 #### 修改hadoop的配置文件，还是参考上个链接 
