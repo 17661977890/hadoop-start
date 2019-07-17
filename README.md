@@ -27,7 +27,7 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 安装地址 ： http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.7
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
 * 配置hadoop的环境变量 vi etc/profile 还是参考上个链接
-* 输入 hadoop 命令验证是否成功
+* 输入 hadoop 命令验证是否成功-----如果你配置玩环境变量还是找不到命令（执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin ）
 
 
 #### 修改hadoop的配置文件，还是参考上个链接 
