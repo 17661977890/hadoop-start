@@ -40,10 +40,14 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 废话不说,正确配置如下:
   
   如果你是su 切换root 用户,non-login shell只会读取~/.bashrc这个文件,不会读取/etc/profile,那就修改这个文件,并且source一下,修改内容如下
+  
   如果你是su - 切换root 用户,login shell 那就会读取/etc/profile  修改此文件即可,然后source 但是因为系统整体性,不是必要不用改,
+  
   如果你是直接用普通用户,hadoop 命令是不行的,不会读取~/.bashrc文件. 用su -l 普通用户名切换普通用户,才会读取~/.bashrc 但是会有权限问题
+  
    --日志:-bash: /usr/local/hadoop/bin/hadoop: 权限不够
-  ![image]() 
+   
+  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717134837.png) 
 ```bash
 JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
 export HADOOP_HOME=/usr/local/hadoop
