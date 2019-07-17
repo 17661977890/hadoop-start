@@ -92,6 +92,7 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
 
 * ==> 启动之前，格式化文件:你安装hadoop目录（usr/local/hadoop/）下执行命令 bin/hdfs namenode -format
   没有报错日志标识成功：
+  打印日志成功：Storage directory /usr/local/hadoop-2.7.7/tmp/dfs/name has been successfully formatted
   
   ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%9B%BE%E7%89%871.png)
   
