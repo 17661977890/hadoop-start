@@ -201,7 +201,8 @@ chkconfig ip6tables off
 * 注意: 有时候因为hadoop版本不同，配置会有不同，就像上述文件要重命名一样
  参考链接：https://www.cnblogs.com/zhengna/p/9316424.html 本文只是以此了解，不按此配置操作，具体其余配置可以自行百度
  
- #### (5) hadoop 的常用shell 命令:
+ 
+# hadoop 的常用shell 命令:
  
  * 参考连接:https://github.com/17661977890/interview-docs/blob/master/docs/hadoop/hadoop02.md
  * 之前hadoop的配置没搞好,这里输入命令老报错:
@@ -213,3 +214,6 @@ chkconfig ip6tables off
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152832.png)
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152828.png)
  
+# hadoop 的相关java api:
+  
+  * 参考项目: hadoop-api
