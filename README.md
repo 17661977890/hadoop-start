@@ -32,12 +32,13 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 
 **当时因为这个环境变量晕了很久,我明明配置了,但是为什么hadoop 命令找不到 ,每次要执行export PATH=$PATH:/usr/local/hadoop/bin 才可以.
 原因找到了:
-(1)得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321  
-给你讲述 login shell 和 no login shell 的区别,加载不同文件来读取环境配置变量,以及如何正确使用 切换root 命令.
+(1)得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321 
+ 讲述 login shell 和 no login shell 的区别,加载不同文件来读取环境配置变量,以及如何正确使用 切换root 命令.
 (2)确实配置有误,配置修改参考连接:https://www.cnblogs.com/liulala2017/p/9519705.html
-在 ~/.bashrc 或 /etc/profile这个文件修改 export PATH=<你要加入的路径1>:<你要加入的路径2>: ...... :$PATH    $PATH这个是放在最后的,不像上一个当前终端使用的在前边**
+在 ~/.bashrc 或 /etc/profile这个文件修改 export PATH=<你要加入的路径1>:<你要加入的路径2>: ...... :$PATH    $PATH这个是放在最后的,不像上一个当前终端使用的在前边,/ect/profile 改完可以重新登录或重启linux**
 
-* 废话不说,正确配置如下:(~/.bashrc在每个用户下都存在,我只是在root用户配置了,还有/etc/profile 也配置了,以下说明仅仅是我研究环境配置加载搜到的各种说法,不必参考,直接修改即可)
+* **正确配置如下:**
+(~/.bashrc在每个用户下都存在,我只是在root用户配置了,还有/etc/profile 也配置了,以下说明仅仅是我研究环境配置加载搜到的各种说法,不必参考,直接修改即可)
   
   如果你是su 切换root 用户,non-login shell只会读取~/.bashrc这个文件,不会读取/etc/profile,那就修改这个文件,并且source一下,修改内容如下
 
