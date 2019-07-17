@@ -1,13 +1,13 @@
 # hadoop-start
-再centos 7 虚拟机搭建伪分布式hadoop集群 版本hadoop 2.7.7
 
-初识hadoop:
+## 一.centos 7 虚拟机搭建伪分布式hadoop集群 版本hadoop 2.7.7
+
+**初识hadoop:**
 Hadoop实现了一个分布式文件系统（Hadoop Distributed File System），简称HDFS。有高容错性的特点，并且设计用来部署在低廉的（low-cost）硬件上；而且它提供高吞吐量来访问应用程序的数据，适合那些有着超大数据集（large data set）的应用程序。
-
 Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数据提供了存储，而MapReduce则为海量的数据提供了计算。
 
-### 准备工作：
-* （1）虚拟机centos7 和 jdk 的安装：（自行百度--桥接模式，所需镜像在下面百度网盘中）
+#### （1）准备工作：
+* 虚拟机centos7 和 jdk 的安装：（自行百度--桥接模式，所需镜像在下面百度网盘中）
 
 **链接：https://pan.baidu.com/s/1LsXEGHr3ejcbFEczG8ai4A 
   提取码：iagq 
@@ -23,7 +23,8 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 3.ls -lrt /etc/alternatives/java -----去后面绿色路径（截止到bin之前就可以） 
 
 
-#### hadoop 2.7.7 的安装与配置：
+#### （2）hadoop 2.7.7 的安装与配置：
+
 * 安装地址 ： http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.7
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
 * 配置hadoop的环境变量 vi /etc/profile 还是参考上个链接
@@ -69,7 +70,7 @@ export PATH=$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin:$PATH
 ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717142858.png)
 
 
-#### 修改hadoop的配置文件，还是参考上个链接 
+#### （3）修改hadoop的配置文件，还是参考上个链接 
    
   * hadoop 配置文件默认是本地模式，我们修改6个配置文件，这些文件都位于/usr/local/hadoop/etc/hadoop 目录下。
   * **下面的配置中的localhost 可能需要改为虚拟机的ip或者主机名，貌似localhost哪里会有问题，我启动时候都该我自己的ip了,如果是动态可以将ip改为静态的**
@@ -202,7 +203,7 @@ chkconfig ip6tables off
  参考链接：https://www.cnblogs.com/zhengna/p/9316424.html 本文只是以此了解，不按此配置操作，具体其余配置可以自行百度
  
  
-# hadoop 的常用shell 命令:
+## 二.hadoop 的常用shell 命令:
  
  * 参考连接:https://github.com/17661977890/interview-docs/blob/master/docs/hadoop/hadoop02.md
  * 之前hadoop的配置没搞好,这里输入命令老报错:
@@ -214,6 +215,6 @@ chkconfig ip6tables off
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152832.png)
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152828.png)
  
-# hadoop 的相关java api:
+## 三.hadoop 的相关java api:
   
   * 参考项目: hadoop-api  https://github.com/17661977890/hadoop-api
