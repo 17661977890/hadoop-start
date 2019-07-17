@@ -28,13 +28,11 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 本地解压缩文件，并重命名为 hadoop，方便使用。拷贝到centos系统中，hadoop 目录的完整路径是“/usr/local/hadoop”。
 * 配置hadoop的环境变量 vi /etc/profile 还是参考上个链接
 * 输入 hadoop 命令验证是否成功-----如果你配置玩环境变量还是找不到命令
-执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin---这样重启系统=>命令：reboot 以后,会发现环境变量失效,因为只适用于当前终端
+* 执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin---这样重启系统=>命令：reboot 以后,会发现环境变量失效,因为只适用于当前终端,所以怎么办呢,看下面,熟读文章
 
-当时因为这个环境变量晕了很久,我明明配置了,是正确的,但是为什么hadoop 命令找不到 ,每次要执行export PATH=$PATH:/usr/local/hadoop/bin 才可以.
-原因找到了,得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321  
-给你讲述 login shell 和 no login shell 的区别,以及如何正确使用 切换root 命令 
+**当时因为这个环境变量晕了很久,我明明配置了,是正确的,但是为什么hadoop 命令找不到 ,每次要执行export PATH=$PATH:/usr/local/hadoop/bin 才可以.
+原因找到了,得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321  给你讲述 login shell 和 no login shell 的区别,以及如何正确使用 切换root 命令** 
 
-* 注意：  
 
 
 
