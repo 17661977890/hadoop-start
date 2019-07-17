@@ -30,10 +30,31 @@ Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数
 * 输入 hadoop 命令验证是否成功-----如果你配置玩环境变量还是找不到命令
 * 执行一下这个命令：export PATH=$PATH:/usr/local/hadoop/bin---这样重启系统=>命令：reboot 以后,会发现环境变量失效,因为只适用于当前终端,所以怎么办呢,看下面,熟读文章
 
-**当时因为这个环境变量晕了很久,我明明配置了,是正确的,但是为什么hadoop 命令找不到 ,每次要执行export PATH=$PATH:/usr/local/hadoop/bin 才可以.
-原因找到了,得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321  给你讲述 login shell 和 no login shell 的区别,以及如何正确使用 切换root 命令** 
+**当时因为这个环境变量晕了很久,我明明配置了,但是为什么hadoop 命令找不到 ,每次要执行export PATH=$PATH:/usr/local/hadoop/bin 才可以.
+原因找到了:
+(1)得益于以为大佬的推荐文章:https://blog.csdn.net/sfhawx/article/details/49969321  
+给你讲述 login shell 和 no login shell 的区别,加载不同文件来读取环境配置变量,以及如何正确使用 切换root 命令.
+(2)确实配置有误,配置修改参考连接:https://www.cnblogs.com/liulala2017/p/9519705.html
+在 ~/.bashrc 或 /etc/profile这个文件修改 export PATH=<你要加入的路径1>:<你要加入的路径2>: ...... :$PATH    $PATH这个是放在最后的,不像上一个当前终端使用的在前边**
 
+* 废话不说,正确配置如下:
+  
+  如果你是su 切换root 用户,non-login shell只会读取~/.bashrc这个文件,不会读取/etc/profile,那就修改这个文件,并且source一下,修改内容如下
+  如果你是su - 切换root 用户,login shell 那就会读取/etc/profile  修改此文件即可,然后source 但是因为系统整体性,不是必要不用改,
+  如果你是直接用普通用户,hadoop 命令是不行的,不会读取~/.bashrc文件. 用su -l 普通用户名切换普通用户,才会读取~/.bashrc 但是会有权限问题
+   --日志:-bash: /usr/local/hadoop/bin/hadoop: 权限不够
+  ![image]() 
+```bash
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
+export HADOOP_HOME=/usr/local/hadoop
+export JAVA_BIN=$JAVA_HOME/bin
+export JAVA_LIB=$JAVA_HOME/lib
+export CLASSPATH=.:$JAVA_LIB/tools.jar:$JAVA_LIB/dt.jar
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin:$PATH 
 
+# 之前最后PATH配置一直是export PATH=$PATH:$JAVA_HOME/bin.:$HADOOP_HOME/bin.:$HADOOP_HOME/sbin  --这是不对的
+```
 
 
 #### 修改hadoop的配置文件，还是参考上个链接 
