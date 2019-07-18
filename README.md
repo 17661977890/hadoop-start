@@ -215,9 +215,9 @@ chkconfig ip6tables off
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152832.png)
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190717152828.png)
  
-## 三.hadoop hdfs分布式文件系统 的相关java api 以及 MapReduce 分布式计算框架 的简单demo:
+## 三.hadoop 两大核心： hdfs分布式文件系统 以及 MapReduce 分布式计算框架 :
   
-  * 参考项目: hadoop-api  https://github.com/17661977890/hadoop-api
+  * 简单实现的demo 参考项目: hadoop-api  https://github.com/17661977890/hadoop-api
   
 ## 四.hadoop 生态圈了解：
   
