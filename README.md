@@ -218,6 +218,7 @@ chkconfig ip6tables off
 ## 三.hadoop 两大核心： hdfs分布式文件系统 以及 MapReduce 分布式计算框架 :
   
   * 简单实现的demo 参考项目: hadoop-api  https://github.com/17661977890/hadoop-api
+  * 另外2.0 之后加入另一大核心： yarn 分布式资源调度中心
   
 ## 四.hadoop 生态圈了解：
   
