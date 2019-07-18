@@ -222,3 +222,4 @@ chkconfig ip6tables off
 ## 四.hadoop 生态圈了解：
   
   * https://www.cnblogs.com/hanzhi/articles/8969109.html
+  * http://blog.fens.me/hadoop-family-roadmap/ ----学习路线图
