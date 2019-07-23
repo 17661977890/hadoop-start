@@ -202,6 +202,65 @@ chkconfig ip6tables off
 * 注意: 有时候因为hadoop版本不同，配置会有不同，就像上述文件要重命名一样
  参考链接：https://www.cnblogs.com/zhengna/p/9316424.html 本文只是以此了解，不按此配置操作，具体其余配置可以自行百度
  
+* 如果启动jps发现少了某个进程 如datanode  那就取看对应日志：
+```bash
+2019-07-23 11:33:04,129 WARN org.apache.hadoop.hdfs.server.common.Storage: Failed to add storage directory [DISK]file:/usr/local/hadoop-2.7.7/tmp/dfs/data/
+java.io.IOException: Incompatible clusterIDs in /usr/local/hadoop-2.7.7/tmp/dfs/data: namenode clusterID = CID-2058d464-95ea-4126-9ec8-10dcf5060127; datanode clusterID = CID-8389ca06-8fd6-433a-aab8-ce530dba3c5d
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.doTransition(DataStorage.java:775)
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.loadStorageDirectory(DataStorage.java:300)
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.loadDataStorage(DataStorage.java:416)
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.addStorageLocations(DataStorage.java:395)
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.recoverTransitionRead(DataStorage.java:573)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.initStorage(DataNode.java:1393)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.initBlockPool(DataNode.java:1358)
+	at org.apache.hadoop.hdfs.server.datanode.BPOfferService.verifyAndSetNamespaceInfo(BPOfferService.java:313)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.connectToNNAndHandshake(BPServiceActor.java:216)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:637)
+	at java.lang.Thread.run(Thread.java:748)
+2019-07-23 11:33:04,132 FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed for Block pool <registering> (Datanode Uuid unassigned) service to sun.com/192.168.2.31:9000. Exiting. 
+java.io.IOException: All specified directories are failed to load.
+	at org.apache.hadoop.hdfs.server.datanode.DataStorage.recoverTransitionRead(DataStorage.java:574)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.initStorage(DataNode.java:1393)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.initBlockPool(DataNode.java:1358)
+	at org.apache.hadoop.hdfs.server.datanode.BPOfferService.verifyAndSetNamespaceInfo(BPOfferService.java:313)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.connectToNNAndHandshake(BPServiceActor.java:216)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:637)
+	at java.lang.Thread.run(Thread.java:748)
+2019-07-23 11:33:04,133 WARN org.apache.hadoop.hdfs.server.datanode.DataNode: Ending block pool service for: Block pool <registering> (Datanode Uuid unassigned) service to sun.com/192.168.2.31:9000
+2019-07-23 11:33:04,235 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Removed Block pool <registering> (Datanode Uuid unassigned)
+2019-07-23 11:33:06,236 WARN org.apache.hadoop.hdfs.server.datanode.DataNode: Exiting Datanode
+2019-07-23 11:33:06,238 INFO org.apache.hadoop.util.ExitUtil: Exiting with status 0
+2019-07-23 11:33:06,239 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down DataNode at sun.com/192.168.2.31
+************************************************************/
+```
+* 发现是namenode 和 datanode的 clusterID 不一致，格式化文件也没用，这个时候要删除tmp下的所有文件，在格式化
+* 另外还有时候会遇到 端口被占用：--编辑/etc/hosts 文件去掉原有的两行注释  
+```bash
+019-07-23 11:22:08,972 INFO org.apache.hadoop.http.HttpServer2: HttpServer.start() threw a non Bind IOException
+java.net.BindException: Port in use: localhost:0
+	at org.apache.hadoop.http.HttpServer2.openListeners(HttpServer2.java:939)
+	at org.apache.hadoop.http.HttpServer2.start(HttpServer2.java:876)
+	at org.apache.hadoop.hdfs.server.datanode.web.DatanodeHttpServer.<init>(DatanodeHttpServer.java:105)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.startInfoServer(DataNode.java:760)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.startDataNode(DataNode.java:1143)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.<init>(DataNode.java:429)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.makeInstance(DataNode.java:2414)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.instantiateDataNode(DataNode.java:2301)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.createDataNode(DataNode.java:2348)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.secureMain(DataNode.java:2530)
+	at org.apache.hadoop.hdfs.server.datanode.DataNode.main(DataNode.java:2554)
+Caused by: java.net.BindException: 无法指定被请求的地址
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.mortbay.jetty.nio.SelectChannelConnector.open(SelectChannelConnector.java:216)
+	at org.apache.hadoop.http.HttpServer2.openListeners(HttpServer2.java:934)
+	... 10 more
+  ```
  
 ## 二.hadoop 的常用shell 命令:
  
