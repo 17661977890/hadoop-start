@@ -261,6 +261,12 @@ Caused by: java.net.BindException: 无法指定被请求的地址
 	at org.apache.hadoop.http.HttpServer2.openListeners(HttpServer2.java:934)
 	... 10 more
   ```
+  * hadoop元数据被破坏
+  ```
+  java.io.IOException: There appears to be a gap in the edit log.  We expected txid 1, but got txid 21
+  # 执行命令恢复，一路选择y c，结束后重启后会遇到上面的问题，继续格式化文件就行了
+  hadoop namenode -recover
+  ```
  
 ## 二.hadoop 的常用shell 命令:
  
