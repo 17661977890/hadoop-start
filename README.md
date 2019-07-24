@@ -176,6 +176,9 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64
   
   可以看到上图正在启动进程，分 别是 namenode、datanode、secondarynamenode、jobtracker、tasktracker，一共 5 个，待执行 完毕后，并不意味着这 5 个  进程成功启动，上面仅仅表示系统正在启动进程而已
 虚拟机内部访问 http://192.168.1.191:50070 查看hadoop服务，访问集群中的所有应用程序的默认端口号为8088。使用以下URL访问该服务 http://192.168.1.191:8088
+* namenode（hdfs）界面：http://192.168.1.180:50070/
+* resourcemanager（yarn资源管理）界面：http://192.168.1.181:8088/
+* nodemanager界面：http://192.168.1.180:8042
 
 如果想要本地访问虚拟机内部的hadoop集群服务，需要将本地和虚拟机的防火墙全部关闭，本地就不再介绍，虚拟机关闭防火墙的几个操作命令：
 ```bash
@@ -198,6 +201,7 @@ chkconfig ip6tables off
 ```
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143421.png)
  ![image](https://github.com/17661977890/hadoop-start/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190716143450.png)
+ ![image](https://img-blog.csdn.net/20170830104201183?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2hlbmd5dXFpYW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
   
 * 注意: 有时候因为hadoop版本不同，配置会有不同，就像上述文件要重命名一样
  参考链接：https://www.cnblogs.com/zhengna/p/9316424.html 本文只是以此了解，不按此配置操作，具体其余配置可以自行百度
